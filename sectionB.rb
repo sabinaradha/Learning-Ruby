@@ -1,62 +1,58 @@
 class Person
-	
+
+	attr_reader :first_name, :last_name, :full_name
+
+
+=begin
+
+	attr_reader is like creating methods
+
+	def first_name
+		@first_name
+	end
+
+	def last_name
+		@last_name
+	end
+
+=end
+
 	def initialize(first_name, last_name)
 		@first_name = first_name
 		@last_name = last_name
-	    @my_array =[]
-	end
-	def my_array
-		@my_array = @my_array.push(@first_name, @last_name)
-		puts @my_array
-	end
-end
-sabina = Person.new("Sabina", "Koirala")
-
- class Person 
- 	attr_accessor :age
- 	def initialize(age)
- 		@age = age
- 	end
- 
- end
- sabina = Person.new(24)
-
-
-puts sabina.my_array
-
-
-class ContactDetail
-	attr_accessor :phoneNumbers, :emails
-	def initialize (phoneNumbers, emails)
-		@phoneNumbers = phoneNumbers
-		@emails = emails
-		@contact_array =[]
-	end
-	class PhoneNumber
-		attr_reader :countryCode, :number
-		def initialize(countryCode, number)
-			@countryCode = countryCode
-			@number = number
-			@contactDetail = []
-		end
 	end
 
-	class Email
-		attr_reader :address
-		def initialize(address)
-			@address = address
-		end
+	def to_s
+		full_name
+	end
 
+	def full_name
+		"#{first_name} #{last_name}"
 	end
-	def contact_array
-		@contact_array = @contact_array.push(@countryCode, @number, @address)
-		puts @contact_array
-	end
+
+=begin
+	if no attr_reader was declared, this should be
+	"#{@first_name} #{@last_name}"
+=end
 
 end
-	sabina = PhoneNumber.new(+977, 9849145124)
-	
-	sabina = Email.new ("sbnkrl@gmail.com")
-	
 
-	puts sabina.contact_array
+people = []
+people << Person.new("Sabina", "Koirala")
+people << Person.new("Sandeep", "Koirala")
+people << Person.new("Satish", "Koirala")
+people << Person.new("Sabita", "Koirala")
+people << Person.new("Sarita", "Koirala")
+people << Person.new("Sangeeta", "Koirala")
+
+
+
+
+
+
+
+
+
+
+
+
