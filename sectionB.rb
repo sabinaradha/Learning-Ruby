@@ -1,5 +1,7 @@
 class Person
 
+	include Comparable
+
 	attr_reader :first_name, :last_name, :full_name
 
 
@@ -30,6 +32,11 @@ class Person
 		"#{first_name} #{last_name}"
 	end
 
+# Comparable method
+	def <=>(other_person)
+		self.first_name <=> other_person.first_name
+	end
+
 =begin
 	if no attr_reader was declared, this should be
 	"#{@first_name} #{@last_name}"
@@ -46,6 +53,9 @@ people << Person.new("Sarita", "Koirala")
 people << Person.new("Sangeeta", "Koirala")
 
 
+# puts people.sort_by { |p| p.first_name }
+
+puts people.sort
 
 
 
