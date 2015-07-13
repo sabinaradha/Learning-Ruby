@@ -1,5 +1,5 @@
 class Person
-	attr_writer :age
+	
 	def initialize(first_name, last_name)
 		@first_name = first_name
 		@last_name = last_name
@@ -7,30 +7,56 @@ class Person
 	end
 	def my_array
 		@my_array = @my_array.push(@first_name, @last_name)
+		puts @my_array
 	end
 end
-family1 = Person.new("Satish", "Koirala")
-family2 = Person.new("Sandeep", "Koirala")
-family3 = Person.new("Sarita", "Koirala")
-family4 = Person.new("Sabita", "Koirala")
-family5 = Person.new("Sangeeta", "Koirala")
-family6 = Person.new("Sabina", "Koirala")
+sabina = Person.new("Sabina", "Koirala")
 
-puts family1.my_array
-puts family2.my_array
-puts family3.my_array
-puts family4.my_array
-puts family5.my_array
-puts family6.my_array
+ class Person 
+ 	attr_accessor :age
+ 	def initialize(age)
+ 		@age = age
+ 	end
  
- puts @my_array.sort_by(first_name)
+ end
+ sabina = Person.new(24)
 
- puts @my_array.sort_by(last_name)
 
-family1.age = 35
-family1.age = 31
-family1.age = 29
-family1.age = 28
-family1.age = 26
-family1.age = 25
+puts sabina.my_array
 
+
+class ContactDetail
+	attr_accessor :phoneNumbers, :emails
+	def initialize (phoneNumbers, emails)
+		@phoneNumbers = phoneNumbers
+		@emails = emails
+		@contact_array =[]
+	end
+	class PhoneNumber
+		attr_reader :countryCode, :number
+		def initialize(countryCode, number)
+			@countryCode = countryCode
+			@number = number
+			@contactDetail = []
+		end
+	end
+
+	class Email
+		attr_reader :address
+		def initialize(address)
+			@address = address
+		end
+
+	end
+	def contact_array
+		@contact_array = @contact_array.push(@countryCode, @number, @address)
+		puts @contact_array
+	end
+
+end
+	sabina = PhoneNumber.new(+977, 9849145124)
+	
+	sabina = Email.new ("sbnkrl@gmail.com")
+	
+
+	puts sabina.contact_array
