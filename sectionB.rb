@@ -44,19 +44,52 @@ class Person
 
 end
 
-people = []
-people << Person.new("Sabina", "Koirala")
-people << Person.new("Sandeep", "Koirala")
-people << Person.new("Satish", "Koirala")
-people << Person.new("Sabita", "Koirala")
-people << Person.new("Sarita", "Koirala")
-people << Person.new("Sangeeta", "Koirala")
+
+class People
+
+	include Enumerable
+
+# Enumerable module method
+	def each
+		if block_given?
+			all_people.each {|a| yield(a)}
+		end
+	end
 
 
-# puts people.sort_by { |p| p.first_name }
+	attr_accessor :all_people
 
-puts people.sort
+	def initialize
+		@all_people = []
+	end
 
+end
+
+p = People.new()
+p.all_people << Person.new("Sabina", "Koirala")
+p.all_people << Person.new("Sandeep", "Koirala")
+p.all_people << Person.new("Satish", "Koirala")
+p.all_people << Person.new("Sabita", "Koirala")
+p.all_people << Person.new("Sarita", "Koirala")
+p.all_people << Person.new("Sangeeta", "Koirala")
+
+
+# Notice this is the effect of Enumerable Mixins
+# You can iterate over arbitrary class object People
+p.each do |person| 
+	puts person
+end
+
+# We can also use any collection methods with this now
+
+puts p.map(&:first_name)
+
+# We can also use custom sort for people now
+
+
+# Notice collection operator also works fine, as the 
+# collected classes already implement Comparable protocol
+puts p.sort
 
 
 
